@@ -8,7 +8,7 @@ const LoginPage = () => {
     password: '',
   });
 
-  const { setUser } = useUser();
+  const { user } = useUser();   // ✅ Ab context se user la rahe hain
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,13 +21,13 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // In a real app, you would validate credentials with a backend.
-    // For this UI, we'll simulate a successful login and set a dummy user.
-    setUser({
-      fullName: 'Marry Doe',
-      emailAddress: formData.email,
-    });
-    navigate('/account-settings');
+
+    // ✅ Check if user exists and credentials match
+    if (user && user.emailAddress === formData.email && user.password === formData.password) {
+      navigate('/account-settings');
+    } else {
+      alert("Invalid credentials. Please try again or create an account.");
+    }
   };
 
   return (

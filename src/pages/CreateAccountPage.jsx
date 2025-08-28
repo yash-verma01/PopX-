@@ -9,7 +9,7 @@ const CreateAccountPage = () => {
     emailAddress: '',
     password: '',
     companyName: '',
-    isAgency: 'yes', // Default value for the radio button
+    isAgency: 'yes',
   });
 
   const { setUser } = useUser();
@@ -20,7 +20,6 @@ const CreateAccountPage = () => {
     
     setFormData((prevState) => ({
       ...prevState,
-      // Handle radio button value correctly
       [id || (type === 'radio' ? 'isAgency' : '')]: type === 'radio' ? (checked ? value : prevState.isAgency) : value,
     }));
   };
@@ -28,7 +27,7 @@ const CreateAccountPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setUser(formData);
-    navigate('/account-settings');
+    navigate('/'); 
   };
 
   return (
@@ -105,6 +104,8 @@ const CreateAccountPage = () => {
             onChange={handleChange}
           />
         </div>
+
+       
         
         <div>
           <label className="block text-sm font-semibold mb-2">
