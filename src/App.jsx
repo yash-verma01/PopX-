@@ -1,7 +1,18 @@
-export default function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import WelcomePage from './pages/WelcomePage';
+
+
+function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
+
+export default App;
